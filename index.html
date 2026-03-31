@@ -411,7 +411,6 @@ function toggleTheme(){
   </nav>
 </div>
 
-<!-- ══ 1 ══ -->
 <div id="sec1" class="sec-title"><span class="sec-num">1</span>Графика и знак на f(x)</div>
 <div class="intro-grid">
   <div class="intro-text">
@@ -449,7 +448,6 @@ function toggleTheme(){
   </div>
 </div>
 
-<!-- ══ 2 ══ -->
 <div id="sec2" class="sec-title"><span class="sec-num">2</span>Интерактивна парабола</div>
 <div class="inter-wrap">
   <div class="para-head">
@@ -503,7 +501,6 @@ function toggleTheme(){
   </div>
 </div>
 
-<!-- ══ 3 ══ -->
 <div id="sec3" class="sec-title"><span class="sec-num">3</span>Всички положения на параболата</div>
 <div class="pt-wrap">
 <table class="pt">
@@ -533,7 +530,6 @@ function toggleTheme(){
 </div>
 <div class="note"><strong>Правило:</strong> Знакът на f(x) съвпада със знака на a навън от корените. <em>Между</em> двата корена знакът е обратен на знака на a.</div>
 
-<!-- ══ 4 ══ -->
 <div id="sec4" class="sec-title"><span class="sec-num">4</span>Алгоритъм за решаване</div>
 <div class="alg">
   <div class="alg-step"><div class="alg-num">1</div><div class="alg-text"><strong>Намери дискриминантата</strong><span class="sm">$D = b^2 - 4ac$</span></div></div>
@@ -542,7 +538,6 @@ function toggleTheme(){
   <div class="alg-step"><div class="alg-num">4</div><div class="alg-text"><strong>Запиши решението</strong><br><span style="font-size:.9rem;">Избери интервалите над / под оста спрямо знака на неравенството.</span></div></div>
 </div>
 
-<!-- ══ 5 ══ -->
 <div id="sec5" class="sec-title"><span class="sec-num">5</span>Примери</div>
 <div class="ex-wrap" id="ex-wrap">
   <div class="ex-card" data-a="1" data-b="-5" data-c="6" data-sign="gt">
@@ -643,10 +638,8 @@ function toggleTheme(){
   </div>
 </div>
 
-<!-- ══ 6 ══ -->
 <div id="sec6" class="sec-title"><span class="sec-num">6</span>Практика — реши неравенство</div>
 
-<!-- ═══ HINT BOX — accepted forms ═══ -->
 <div class="note" style="margin-bottom:16px;">
   <strong>💡 Приемат се всички еквивалентни форми на отговора!</strong><br>
   Например за решение „всички x освен x₀" може да пишете:<br>
@@ -813,7 +806,6 @@ function toggleTheme(){
   </div>
 </div>
 
-<!-- ══ 7 ══ -->
 <div id="sec7" class="sec-title"><span class="sec-num">7</span>Обобщена таблица — всички решения</div>
 <div class="st-wrap">
 <table class="st">
@@ -840,9 +832,7 @@ function toggleTheme(){
   <span style="margin-top:4px;display:block;">При <strong>нестрого</strong> (≥ или ≤) корените се <em>включват</em>. При <strong>строго</strong> (&gt; или &lt;) — не се включват.</span>
 </div>
 
-</div><!-- /page -->
-
-<script>
+</div><script>
 /* ═══════════════════════════════════════════════════════════
    PARABOLA ENGINE
 ══════════════════════════════════════════════════════════════ */
@@ -1261,10 +1251,17 @@ function genTask(){
       b=-aSign*(n1+n2);
       c=aSign*c;
     }
+  }else if(r<0.90){
+    const aAbs=[1,2,3][Math.floor(Math.random()*3)];a=aSign*aAbs;
+    x1=Math.floor(Math.random()*7)-3;x2=x1;b=a*(-2*x1);c=a*x1*x1;
+  }else{
+    a=aSign;const h=Math.floor(Math.random()*5)-2;const k=(Math.random()<.5?1:2)*aSign;
+    b=-2*a*h;c=a*h*h+k;x1=null;x2=null;
   }
   const D=b*b-4*a*c;
   return{a,b,c,x1,x2,D,ineqSign};
 }
+
 function taskToStr(t){
   const{a,b,c,ineqSign}=t;let p=[];
   if(a===1)p.push('x²');else if(a===-1)p.push('−x²');else p.push((a<0?'−':'')+Math.abs(a)+'x²');
